@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    kotlin("kapt")
 }
 
 android {
@@ -18,7 +19,11 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField("String", "BASE_URL", "\"${AppConfig.TestBaseUrl}\"")
+        }
         release {
+            buildConfigField("String", "BASE_URL", "\"${AppConfig.ProdBaseUrl}\"")
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -33,14 +38,23 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures.viewBinding = true
 }
 
 dependencies {
 
-    implementation("androidx.core:core-ktx:1.7.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.8.0")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    implementation(Dependencies.coreKtx)
+    implementation(Dependencies.appcompat)
+    implementation(Dependencies.material)
+    implementation(Dependencies.constraintLayout)
+    implementation(Dependencies.lifecycleRuntime)
+    implementation(Dependencies.coroutines)
+    implementation(Dependencies.hilt)
+    kapt(Dependencies.hiltCompiler)
+    implementation(Dependencies.retrofit)
+    implementation(Dependencies.retrofitGsonConverter)
+    implementation(Dependencies.okhttpLoggingInterceptor)
+
+    testImplementation(Dependencies.junit)
+    androidTestImplementation(Dependencies.androidJunit)
 }

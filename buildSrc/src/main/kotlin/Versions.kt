@@ -10,5 +10,7 @@ object Versions {
     const val espressoCore = "3.5.1"
     const val hilt = "2.44"
     const val retrofit = "2.9.0"
-    const val okhttpLoggingInterceptor="4.10.0"
+    const val okhttpLoggingInterceptor = "4.10.0"
+    const val coroutines = "1.6.4"
+    const val lifecyclewRuntime = "2.6.1"
 }

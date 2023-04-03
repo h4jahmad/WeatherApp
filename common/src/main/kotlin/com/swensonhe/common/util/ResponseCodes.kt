@@ -1,0 +1,12 @@
+package com.swensonhe.common.util
+
+object ResponseCodes {
+    val INFO_RESPONSE_RANGE = 100..199
+    val SUCCESS_RESPONSE_RANGE = 200..299
+    val REDIRECT_RESPONSE_RANGE = 300..399
+    val CLIENT_ERROR_RESPONSE_RANGE = 400..499
+    val SERVER_ERROR_RESPONSE_RANGE = 500..599
+
+    const val AUTHENTICATION_ERROR_CODE = 401
+
+}

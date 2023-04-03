@@ -1,3 +1,10 @@
 <resources>
 	<string name="app_name">common</string>
+	<string name="toast_authentication_error" />
+	<string name="toast_username_already_exists" />
+	<string name="toast_server_error" />
+	<string name="toast_client_error" />
+	<string name="toast_informational_error" />
+	<string name="toast_redirection_error" />
+	<string name="toast_unknown_error" />
 </resources>

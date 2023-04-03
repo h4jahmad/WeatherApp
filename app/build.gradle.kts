@@ -34,9 +34,7 @@ android {
     kotlinOptions {
         jvmTarget = AppConfig.jvmTarget
     }
-    buildFeatures {
-        viewBinding = true
-    }
+    buildFeatures.viewBinding = true
 }
 
 kapt {
@@ -49,6 +47,9 @@ dependencies {
     implementation(Dependencies.appcompat)
     implementation(Dependencies.material)
     implementation(Dependencies.constraintLayout)
+    implementation(Dependencies.hilt)
+    kapt(Dependencies.hiltCompiler)
+
     testImplementation(Dependencies.junit)
     androidTestImplementation(Dependencies.androidJunit)
     androidTestImplementation(Dependencies.espressoCore)

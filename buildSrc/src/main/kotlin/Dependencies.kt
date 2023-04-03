@@ -11,10 +11,14 @@ object Dependencies {
     const val androidJunit = "androidx.test.ext:junit:${Versions.androidJunit}"
     const val espressoCore = "androidx.test.espresso:espresso-core:${Versions.espressoCore}"
     const val hiltPlugin = "com.google.dagger.hilt.android"
-    const val hiltCore = "com.google.dagger:hilt-android:${Versions.hilt}"
+    const val hilt = "com.google.dagger:hilt-android:${Versions.hilt}"
     const val hiltCompiler = "com.google.dagger:hilt-android-compiler:${Versions.hilt}"
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     const val retrofitGsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
     const val okhttpLoggingInterceptor =
         "com.squareup.okhttp3:logging-interceptor:${Versions.okhttpLoggingInterceptor}"
+    const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
+    const val lifecycleRuntime =
+        "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecyclewRuntime}"
+
 }

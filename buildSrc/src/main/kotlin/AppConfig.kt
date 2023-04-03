@@ -10,5 +10,6 @@ object AppConfig {
     const val testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     val javaVersion = JavaVersion.VERSION_1_8
     const val jvmTarget = "1.8"
-
+    const val ProdBaseUrl = "http://api.weatherapi.com/v1/"
+    const val TestBaseUrl = "http://api.weatherapi.com/v1/"
 }
