@@ -8,6 +8,6 @@ import javax.inject.Inject
 class SearchRemoteDataSource @Inject constructor(
     private val service: SearchService
 ): SearchDataSource {
-    suspend fun search(query: String): ActionResult<List<Location>> =
+    override suspend fun search(query: String): ActionResult<List<Location>> =
         service.searchCity(query)
 }
