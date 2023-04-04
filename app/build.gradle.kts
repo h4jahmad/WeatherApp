@@ -43,6 +43,7 @@ kapt {
 }
 
 dependencies {
+    implementation(project(mapOf("path" to ":common")))
 
     implementation(Dependencies.coreKtx)
     implementation(Dependencies.appcompat)

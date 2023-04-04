@@ -1,6 +1,8 @@
 package com.swensonhe.common.di
 
 import com.swensonhe.common.BuildConfig
+import com.swensonhe.common.service.SearchService
+import com.swensonhe.common.service.WeatherService
 import com.swensonhe.common.util.NetworkResponseAdapterFactory
 import dagger.Module
 import dagger.Provides
@@ -39,4 +41,13 @@ object RemoteModule {
         .addConverterFactory(converterFactory)
         .addCallAdapterFactory(NetworkResponseAdapterFactory())
         .build()
+
+    @Provides
+    fun provideWeatherService(retrofit: Retrofit): WeatherService =
+        retrofit.create(WeatherService::class.java)
+
+    @Provides
+    fun provideSearchService(retrofit: Retrofit): SearchService =
+        retrofit.create(SearchService::class.java)
+
 }
