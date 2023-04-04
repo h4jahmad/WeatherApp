@@ -1,4 +1,4 @@
-package com.swensonhe.weatherapp.data.usecase
+package com.swensonhe.weatherapp.data.usecase.datetime
 
 interface DateTimeUseCase {
     fun getCurrentTime(): String
