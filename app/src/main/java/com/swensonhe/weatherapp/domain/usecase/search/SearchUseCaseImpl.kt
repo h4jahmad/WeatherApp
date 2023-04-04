@@ -1,4 +1,4 @@
-package com.swensonhe.weatherapp.data.usecase.search
+package com.swensonhe.weatherapp.domain.usecase.search
 
 import javax.inject.Inject
 

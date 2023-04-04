@@ -1,7 +1,5 @@
-package com.swensonhe.weatherapp.data.usecase.datetime
+package com.swensonhe.weatherapp.domain.usecase.datetime
 
-import com.swensonhe.weatherapp.data.usecase.datetime.DateTimeUseCase
-import com.swensonhe.weatherapp.data.usecase.datetime.DateTimeUseCaseImpl
 import org.junit.Before
 
 import org.junit.Test

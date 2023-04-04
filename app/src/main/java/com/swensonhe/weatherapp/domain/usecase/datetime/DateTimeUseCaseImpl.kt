@@ -1,4 +1,4 @@
-package com.swensonhe.weatherapp.data.usecase.datetime
+package com.swensonhe.weatherapp.domain.usecase.datetime
 
 import java.text.SimpleDateFormat
 import java.util.*
