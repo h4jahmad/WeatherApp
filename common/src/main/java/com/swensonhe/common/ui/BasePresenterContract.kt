@@ -5,4 +5,8 @@ interface BasePresenterContract<V : BaseViewContract<*>> {
     fun attachView(view: V)
 
     fun detachView()
+
+    fun start() {
+
+    }
 }

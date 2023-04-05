@@ -1,7 +1,9 @@
 package com.swensonhe.common.ui
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -12,7 +14,7 @@ import kotlinx.coroutines.launch
 
 typealias BindingInitializer = (LayoutInflater) -> ViewBinding
 
-abstract class BaseActivity<V : ViewBinding, P: BasePresenter<*>> : AppCompatActivity() {
+abstract class BaseActivity<V : ViewBinding> : AppCompatActivity() {
     private var _binding: V? = null
     protected val binding: V
         get() = _binding ?: throw IllegalStateException("ViewBinding is not initialized")
@@ -20,7 +22,16 @@ abstract class BaseActivity<V : ViewBinding, P: BasePresenter<*>> : AppCompatAct
 
     abstract fun initViews()
 
-    abstract val presenter: P
+    @Suppress("UNCHECKED_CAST")
+    override fun onCreate(savedInstanceState: Bundle?) {
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        super.onCreate(savedInstanceState)
+        setContentView(
+            bindingInitializer(layoutInflater).also {
+                _binding = it as? V
+            }.root
+        )
+    }
 
     protected inline fun <reified T> collectWithLifecycle(
         flow: Flow<T>,
@@ -37,6 +48,5 @@ abstract class BaseActivity<V : ViewBinding, P: BasePresenter<*>> : AppCompatAct
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
-        presenter.detachView()
     }
 }

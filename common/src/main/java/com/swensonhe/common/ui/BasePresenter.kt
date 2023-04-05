@@ -1,8 +1,13 @@
 package com.swensonhe.common.ui
 
-abstract class BasePresenter<V : BaseViewContract<*>> : BasePresenterContract<V> {
-    private var _view: V? = null
+import com.swensonhe.common.entities.WeatherException
+import kotlinx.coroutines.flow.MutableStateFlow
 
+abstract class BasePresenter<V : BaseViewContract<*>> : BasePresenterContract<V> {
+
+    protected val error = MutableStateFlow<WeatherException?>(null)
+
+    private var _view: V? = null
     protected val view: V
         get() = _view ?: throw IllegalStateException("")
 

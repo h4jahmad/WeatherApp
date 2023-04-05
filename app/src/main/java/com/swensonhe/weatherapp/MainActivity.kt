@@ -6,20 +6,32 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import com.google.android.material.snackbar.Snackbar
+import com.swensonhe.common.ui.BaseActivity
+import com.swensonhe.common.ui.BindingInitializer
 import com.swensonhe.weatherapp.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-class MainActivity : AppCompatActivity() {
+@AndroidEntryPoint
+class MainActivity : BaseActivity<ActivityMainBinding>(), MainContracts.View {
 
-    private lateinit var binding: ActivityMainBinding
+    override val bindingInitializer: BindingInitializer
+        get() = ActivityMainBinding::inflate
+
+    override fun initViews() {
+        TODO("Not yet implemented")
+    }
+
+    @Inject
+    lateinit var presenter: MainContracts.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
         setSupportActionBar(binding.toolbar)
+
+        presenter.attachView(this)
+        presenter.start()
 
         binding.fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
@@ -42,6 +54,11 @@ class MainActivity : AppCompatActivity() {
             R.id.action_settings -> true
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.detachView()
     }
 
 }

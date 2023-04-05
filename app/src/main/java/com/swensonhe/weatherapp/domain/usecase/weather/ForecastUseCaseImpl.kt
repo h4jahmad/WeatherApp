@@ -1,4 +1,4 @@
-package com.swensonhe.weatherapp.domain.usecase.search
+package com.swensonhe.weatherapp.domain.usecase.weather
 
 import com.swensonhe.common.di.IoDispatcher
 import com.swensonhe.common.entities.ActionResult
@@ -8,13 +8,9 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class SearchUseCaseImpl @Inject constructor(
+class ForecastUseCaseImpl @Inject constructor(
     @IoDispatcher private val dispatcher: CoroutineDispatcher,
     private val searchRepository: SearchRepository
-) : SearchUseCase {
-    override suspend fun searchCity(
-        query: String,
-    ): ActionResult<List<Location>> = withContext(dispatcher) {
-        searchRepository.searchCity(query)
-    }
+) : ForecastUseCase {
+
 }
