@@ -20,5 +20,7 @@ object Dependencies {
     const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
     const val lifecycleRuntime =
         "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecyclewRuntime}"
+    const val mockk = "io.mockk:mockk:${Versions.mockk}"
+    const val truth = "com.google.truth:truth:${Versions.truth}"
 
 }

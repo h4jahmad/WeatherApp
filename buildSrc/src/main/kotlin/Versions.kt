@@ -13,4 +13,6 @@ object Versions {
     const val okhttpLoggingInterceptor = "4.10.0"
     const val coroutines = "1.6.4"
     const val lifecyclewRuntime = "2.6.1"
+    const val mockk = "1.13.4"
+    const val truth = "1.1.3"
 }

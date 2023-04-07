@@ -1,21 +1,17 @@
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
+    id("com.android.library")
+    kotlin("android")
     kotlin("kapt")
 }
 
 android {
     namespace = "com.swensonhe.common"
-    compileSdk = 33
+    compileSdk = AppConfig.compileSdk
 
     defaultConfig {
-        applicationId = "com.swensonhe.common"
-        minSdk = 24
-        targetSdk = 33
-        versionCode = 1
-        versionName = "1.0"
+        minSdk = AppConfig.minSdk
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = AppConfig.testInstrumentationRunner
     }
 
     buildTypes {
@@ -32,11 +28,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = AppConfig.javaVersion
+        targetCompatibility = AppConfig.javaVersion
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = AppConfig.jvmTarget
     }
     buildFeatures.viewBinding = true
 }

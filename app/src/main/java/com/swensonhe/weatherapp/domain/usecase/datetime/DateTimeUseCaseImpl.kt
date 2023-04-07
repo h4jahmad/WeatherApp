@@ -11,12 +11,17 @@ class DateTimeUseCaseImpl : DateTimeUseCase {
     override fun getTodayDate(): String =
         SimpleDateFormat("EEEE, d MMM yyyy", defaultLocale).format(Date())
 
-    override fun getADayAfterTomorrow(): String = SimpleDateFormat("EEEE", defaultLocale)
-        .format(
-            Calendar.getInstance(defaultLocale).apply {
-                time = Date()
-                add(Calendar.DAY_OF_MONTH, 2)
-            }.time
-        )
+    override fun getDayAfterTodayName(dayAfterToday: Int): String {
+        if (dayAfterToday <= 0) {
+            throw IllegalArgumentException("dayAfterToday should be greater than zero.")
+        }
+        return SimpleDateFormat("EEEE", defaultLocale)
+            .format(
+                Calendar.getInstance(defaultLocale).apply {
+                    time = Date()
+                    add(Calendar.DAY_OF_MONTH, dayAfterToday)
+                }.time
+            )
+    }
 
 }

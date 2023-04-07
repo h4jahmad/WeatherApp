@@ -19,7 +19,9 @@ abstract class MainModule {
     @Binds
     abstract fun provideMainPresenter(presenter: MainPresenter): MainContracts.Presenter
 
-    @Provides
-    fun provideCoroutineScope(): CoroutineScope =
-        MainScope() + CoroutineName("WeatherApp")
+    companion object {
+        @Provides
+        fun provideCoroutineScope(): CoroutineScope =
+            MainScope() + CoroutineName("WeatherApp")
+    }
 }

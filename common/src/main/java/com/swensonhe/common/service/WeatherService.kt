@@ -8,6 +8,6 @@ interface WeatherService {
     @GET("forecast.json/?key=${SearchService.API_KEY}")
     suspend fun getForecast(
         @Query("q") query: String,
-        @Query("")
+        @Query("days") days: Int,
     )
 }

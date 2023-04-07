@@ -1,16 +1,16 @@
 plugins {
     id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    id(Dependencies.hiltPlugin)
+    kotlin("android")
     kotlin("kapt")
+    id(Dependencies.hiltPlugin)
 }
 
 android {
-    namespace = AppConfig.namespace
+    namespace = "com.swensonhe.weatherapp"
     compileSdk = AppConfig.compileSdk
 
     defaultConfig {
-        applicationId = AppConfig.namespace
+        applicationId = "com.swensonhe.weatherapp"
         minSdk = AppConfig.minSdk
         targetSdk = AppConfig.targetSdk
         versionCode = AppConfig.versionCode
@@ -52,7 +52,9 @@ dependencies {
     implementation(Dependencies.hilt)
     kapt(Dependencies.hiltCompiler)
 
+    testImplementation(Dependencies.truth)
     testImplementation(Dependencies.junit)
+    testImplementation(Dependencies.mockk)
     androidTestImplementation(Dependencies.androidJunit)
     androidTestImplementation(Dependencies.espressoCore)
 }

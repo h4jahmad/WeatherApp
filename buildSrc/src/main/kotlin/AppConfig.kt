@@ -1,7 +1,6 @@
 import org.gradle.api.JavaVersion
 
 object AppConfig {
-    const val namespace = "com.swensonhe.weatherapp"
     const val compileSdk = 33
     const val minSdk = 24
     const val targetSdk = 33
