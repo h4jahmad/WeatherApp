@@ -18,22 +18,16 @@ class DateTimeUseCaseImplTest {
     @Test
     fun current_time_matches_the_patter_should_succeed() {
         val actualCurrentTime = datetimeUseCase.getCurrentTime()
-        val pattern = Pattern.compile("h:mm a")
+        val pattern = Pattern.compile("(?:[1-9]|[1-9][1-9]):\\d\\d\\s(?:AM|PM)")
         assertThat(actualCurrentTime).matches(pattern)
     }
 
     @Test
     fun today_date_matches_pattern_should_succeed() {
         val actualTodayDate = datetimeUseCase.getTodayDate()
-        val constPattern = "(?:^|\\W)Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday(?:\$|\\W)" +
-                "," +
-                "\\s" +
-                "^(?:\\d|[12]\\d|3[01])\$" +
-                "\\s" +
-                "(?:^|\\W)Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec(?:\$|\\W)" +
-                "\\s" +
-                "\\d{4}\$"
-        val pattern = Pattern.compile(constPattern)
+        val pattern = Pattern.compile(
+            "(?:Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday),\\s(?:0?[1-9]|1\\d|2\\d|3[01])\\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\\s\\d{4}"
+        )
         assertThat(actualTodayDate).matches(pattern)
     }
 
