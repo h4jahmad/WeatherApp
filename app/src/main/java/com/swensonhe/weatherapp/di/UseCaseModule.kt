@@ -4,6 +4,8 @@ import com.swensonhe.weatherapp.domain.usecase.datetime.DateTimeUseCase
 import com.swensonhe.weatherapp.domain.usecase.datetime.DateTimeUseCaseImpl
 import com.swensonhe.weatherapp.domain.usecase.search.SearchUseCase
 import com.swensonhe.weatherapp.domain.usecase.search.SearchUseCaseImpl
+import com.swensonhe.weatherapp.domain.usecase.weather.ForecastUseCase
+import com.swensonhe.weatherapp.domain.usecase.weather.ForecastUseCaseImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -18,4 +20,7 @@ interface UseCaseModule {
 
     @Binds
     fun bindSearchUseCase(impl: SearchUseCaseImpl): SearchUseCase
+
+    @Binds
+    fun bindForecastUseCase(impl: ForecastUseCaseImpl): ForecastUseCase
 }

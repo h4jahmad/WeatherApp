@@ -1,5 +1,6 @@
 package com.swensonhe.common.service
 
+import com.swensonhe.common.entities.LocationWeather
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -9,5 +10,5 @@ interface WeatherService {
     suspend fun getForecast(
         @Query("q") query: String,
         @Query("days") days: Int,
-    )
+    ): LocationWeather
 }

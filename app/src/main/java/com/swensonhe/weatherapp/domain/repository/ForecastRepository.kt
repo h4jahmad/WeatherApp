@@ -1,10 +1,10 @@
-package com.swensonhe.weatherapp.domain.usecase.weather
+package com.swensonhe.weatherapp.domain.repository
 
 import com.swensonhe.common.entities.LocationWeather
 
-interface ForecastUseCase {
+interface ForecastRepository {
     suspend fun getLocationForecast(
         locationName: String,
-        days: Int,
+        days: Int
     ): LocationWeather
 }
