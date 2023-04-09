@@ -30,7 +30,9 @@ internal fun <T> mapResponse(response: Response<T>): ActionResult<T> = when (res
         ActionResult.Error(WeatherException(messageResId = R.string.toast_redirection_error))
     }
     in ResponseCodes.SUCCESS_RESPONSE_RANGE -> {
-        ActionResult.Success(response)
+        response.body()?.let {
+            ActionResult.Success(it)
+        } ?: ActionResult.Error(WeatherException(message = "No Data Found."))
     }
     else -> ActionResult.Error(
         WeatherException(

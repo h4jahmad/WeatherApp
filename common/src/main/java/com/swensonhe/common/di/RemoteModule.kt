@@ -12,6 +12,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -35,17 +36,19 @@ object RemoteModule {
     fun provideRetrofit(
         client: OkHttpClient,
         converterFactory: GsonConverterFactory,
-    ) = Retrofit.Builder()
+    ): Retrofit = Retrofit.Builder()
         .baseUrl(BuildConfig.BASE_URL)
         .client(client)
         .addConverterFactory(converterFactory)
         .addCallAdapterFactory(NetworkResponseAdapterFactory())
         .build()
 
+    @Singleton
     @Provides
     fun provideWeatherService(retrofit: Retrofit): WeatherService =
         retrofit.create(WeatherService::class.java)
 
+    @Singleton
     @Provides
     fun provideSearchService(retrofit: Retrofit): SearchService =
         retrofit.create(SearchService::class.java)

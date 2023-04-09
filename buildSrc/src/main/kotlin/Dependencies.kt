@@ -16,11 +16,15 @@ object Dependencies {
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     const val retrofitGsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
     const val okhttpLoggingInterceptor =
-        "com.squareup.okhttp3:logging-interceptor:${Versions.okhttpLoggingInterceptor}"
+        "com.squareup.okhttp3:logging-interceptor:${Versions.okhttp}"
+    const val okhttpMockWebServer = "com.squareup.okhttp3:mockwebserver:${Versions.okhttp}"
     const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
+    const val coroutinesTesting =
+        "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutines}"
     const val lifecycleRuntime =
         "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecyclewRuntime}"
     const val mockk = "io.mockk:mockk:${Versions.mockk}"
     const val truth = "com.google.truth:truth:${Versions.truth}"
-
+    const val androidXTestCore = "androidx.test:core:${Versions.androidXTestCore}"
+    const val androidXTesting = "androidx.arch.core:core-testing:${Versions.androidXTesting}"
 }
