@@ -1,13 +1,11 @@
 package com.swensonhe.weatherapp
 
-import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.WindowCompat
-import com.google.android.material.snackbar.Snackbar
+import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
 import com.swensonhe.common.ui.BaseActivity
 import com.swensonhe.common.ui.BindingInitializer
+import com.swensonhe.common.ui.showSnackbar
 import com.swensonhe.weatherapp.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -20,33 +18,21 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), MainContracts.View {
 
     @Inject
     lateinit var presenter: MainContracts.Presenter
+    private val listAdapter: ForecastAdapter = ForecastAdapter()
 
     override fun initViews() {
-        setSupportActionBar(binding.toolbar)
+        binding.activityMainForecastList.apply {
+            itemAnimator = DefaultItemAnimator()
+            layoutManager = LinearLayoutManager(context, HORIZONTAL, false)
+            adapter = listAdapter
+        }
 
         presenter.attachView(this)
         presenter.start()
-
-        binding.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAnchorView(R.id.fab)
-                .setAction("Action", null).show()
-        }
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.menu_main, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        return when (item.itemId) {
-            R.id.action_settings -> true
-            else -> super.onOptionsItemSelected(item)
+        collectWithLifecycle(presenter.observeError()) { error ->
+            if (error != null) {
+                binding.root.showSnackbar(error.messageResId, error.message)
+            }
         }
     }
 

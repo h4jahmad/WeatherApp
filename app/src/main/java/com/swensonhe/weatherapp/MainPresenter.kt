@@ -7,6 +7,7 @@ import com.swensonhe.common.ui.BasePresenter
 import com.swensonhe.weatherapp.domain.usecase.search.SearchUseCase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -22,6 +23,7 @@ class MainPresenter @Inject constructor(
 
     private val _searchList = MutableStateFlow<List<Location>>(emptyList())
     val searchList = _searchList.asStateFlow()
+    override fun observeError(): StateFlow<WeatherException?> = error
 
     override fun start() {
         scope.launch {

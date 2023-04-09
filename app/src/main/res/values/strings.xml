@@ -2,7 +2,8 @@
 	<string name="app_name">WeatherApp</string>
 
 	<string name="main_search_city_action">Search City</string>
-	<string name="fahrenheit_unit">\u00C2\u00B0F</string>
+	<string name="fahrenheit_unit">\u00B0F</string>
 	<string name="description_wind_speed">Wind Speed</string>
 	<string name="description_humidity">Humidity</string>
+	<string name="forecast_temp_placeholder">%1$f\u00B0/%2$f\u00B0F</string>
 </resources>
