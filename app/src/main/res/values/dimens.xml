@@ -1,3 +1,11 @@
 <resources>
 	<dimen name="fab_margin">16dp</dimen>
+	<dimen name="activity_main_padding_top">40dp</dimen>
+	<dimen name="activity_main_padding_horizontal">30dp</dimen>
+	<dimen name="size_action">24dp</dimen>
+	<dimen name="main_city_name_margin_top">66dp</dimen>
+	<dimen name="text_size_title">32sp</dimen>
+	<dimen name="text_size_medium">16sp</dimen>
+	<dimen name="size_current_weather_image">70dp</dimen>
+	<dimen name="margin_top_weather_image">100dp</dimen>
 </resources>

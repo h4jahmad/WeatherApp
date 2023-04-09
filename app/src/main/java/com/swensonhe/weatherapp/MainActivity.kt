@@ -18,16 +18,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), MainContracts.View {
     override val bindingInitializer: BindingInitializer
         get() = ActivityMainBinding::inflate
 
-    override fun initViews() {
-        TODO("Not yet implemented")
-    }
-
     @Inject
     lateinit var presenter: MainContracts.Presenter
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
+    override fun initViews() {
         setSupportActionBar(binding.toolbar)
 
         presenter.attachView(this)

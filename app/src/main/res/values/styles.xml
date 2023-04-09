@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<style name="Base.Theme.WeatherApp.Text" parent="Base.Theme.WeatherApp" />
+
+	<style name="Text.WeatherApp.Bold" parent="Base.Theme.WeatherApp.Text">
+		<item name="fontFamily">@font/sf_bold</item>
+	</style>
+
+
+	<style name="Widget.WeatherApp.ActionImage" parent="Theme.WeatherApp">
+		<item name="android:focusable">true</item>
+		<item name="android:clickable">true</item>
+		<item name="background">?attr/selectableItemBackgroundBorderless</item>
+	</style>
+
+</resources>
