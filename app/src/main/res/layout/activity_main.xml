@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:background="@drawable/bg_main">
-<!--TODO: Fix the issue with gradient background-->
-	<FrameLayout
+
+	<ScrollView
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content">
+		android:layout_height="match_parent"
+		android:background="@drawable/gradient_main">
 
 		<androidx.constraintlayout.widget.ConstraintLayout
 			android:layout_width="match_parent"
-			android:layout_height="match_parent"
+			android:layout_height="wrap_content"
 			android:fitsSystemWindows="true"
 			android:paddingHorizontal="@dimen/activity_main_padding_horizontal"
 			android:paddingTop="@dimen/activity_main_padding_top">
@@ -72,6 +73,102 @@
 				app:layout_constraintTop_toBottomOf="@+id/activity_main_date_label"
 				tools:src="@drawable/ic_sun" />
 
+			<TextView
+				android:id="@+id/activity_main_current_temp_label"
+				style="@style/Text.WeatherApp.Bold"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="@dimen/space_large"
+				android:gravity="center"
+				android:textSize="@dimen/text_size_current_temp"
+				app:layout_constraintEnd_toStartOf="@+id/activity_main_current_temp_unit_label"
+				app:layout_constraintHorizontal_bias="1.0"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@+id/activity_main_current_weather_image"
+				tools:text="82.4" />
+
+			<TextView
+				android:id="@+id/activity_main_current_temp_unit_label"
+				style="@style/Text.WeatherApp.Thin"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:gravity="center"
+				android:textSize="@dimen/text_size_current_temp"
+				app:layout_constraintBottom_toBottomOf="@+id/activity_main_current_temp_label"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintHorizontal_bias="0.721"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="@+id/activity_main_current_temp_label"
+				app:layout_constraintVertical_bias="1.0"
+				tools:text="@string/fahrenheit_unit" />
+
+			<TextView
+				android:id="@+id/activity_main_current_weather_label"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="@dimen/space_medium"
+				android:gravity="center"
+				android:textSize="@dimen/text_size_medium"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@+id/activity_main_current_temp_label"
+				tools:text="It's a sunny day." />
+
+			<ImageView
+				android:id="@+id/activity_main_current_wind_icon"
+				android:layout_width="@dimen/size_small_icon"
+				android:layout_height="@dimen/size_small_icon"
+				android:layout_marginTop="@dimen/space_semi_large"
+				android:contentDescription="@string/description_wind_speed"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintHorizontal_bias="0.3"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@+id/activity_main_current_weather_label"
+				app:srcCompat="@drawable/ic_wind" />
+
+			<TextView
+				android:id="@+id/activity_main_current_wind_label"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="@dimen/space_small"
+				android:textSize="@dimen/text_size_small"
+				app:layout_constraintBottom_toBottomOf="@+id/activity_main_current_wind_icon"
+				app:layout_constraintStart_toEndOf="@+id/activity_main_current_wind_icon"
+				app:layout_constraintTop_toTopOf="@+id/activity_main_current_wind_icon"
+				tools:text="3 mph" />
+
+			<ImageView
+				android:id="@+id/activity_main_current_humidity_icon"
+				android:layout_width="@dimen/size_small_icon"
+				android:layout_height="@dimen/size_small_icon"
+				android:layout_marginTop="@dimen/space_semi_large"
+				android:layout_marginEnd="@dimen/space_small"
+				android:contentDescription="@string/description_humidity"
+				app:layout_constraintEnd_toStartOf="@+id/activity_main_current_humidity_label"
+				app:layout_constraintTop_toBottomOf="@+id/activity_main_current_weather_label"
+				app:srcCompat="@drawable/ic_drop" />
+
+			<TextView
+				android:id="@+id/activity_main_current_humidity_label"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textSize="@dimen/text_size_small"
+				app:layout_constraintBottom_toBottomOf="@+id/activity_main_current_humidity_icon"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintHorizontal_bias="0.7"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="@+id/activity_main_current_humidity_icon"
+				tools:text="60%" />
+
+			<androidx.recyclerview.widget.RecyclerView
+				android:id="@+id/activity_main_forecast_list"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="@dimen/forecast_top_margin"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@+id/activity_main_current_wind_icon" />
 		</androidx.constraintlayout.widget.ConstraintLayout>
-	</FrameLayout>
-</ScrollView>
+
+	</ScrollView>
+</FrameLayout>

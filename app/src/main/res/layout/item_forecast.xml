@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:gravity="center_horizontal"
+	android:orientation="vertical"
+	tools:ignore="UseCompoundDrawables">
+
+	<ImageView
+		android:id="@+id/item_forecast_icon"
+		android:layout_width="@dimen/size_forecast_icon"
+		android:layout_height="@dimen/size_forecast_icon"
+		android:contentDescription="@null"
+		tools:src="@drawable/ic_sun" />
+
+	<TextView
+		android:id="@+id/item_forecast_temp_label"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="@dimen/space_small"
+		android:textSize="@dimen/text_size_small"
+		tools:text="82.486F" />
+
+	<TextView
+		android:id="@+id/item_forecast_day_label"
+		style="@style/Text.WeatherApp.Bold"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="@dimen/space_half_small"
+		android:textSize="@dimen/text_size_small"
+		tools:text="Today" />
+
+</LinearLayout>
