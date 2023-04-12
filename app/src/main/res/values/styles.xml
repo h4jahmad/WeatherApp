@@ -6,17 +6,52 @@
 	<style name="Text.WeatherApp.Bold" parent="Base.Theme.WeatherApp.Text">
 		<item name="fontFamily">@font/sf_bold</item>
 	</style>
+
 	<style name="Text.WeatherApp.Thin" parent="Base.Theme.WeatherApp.Text">
 		<item name="fontFamily">@font/sf_thin</item>
 	</style>
 
-
-	<style name="Widget.WeatherApp.ActionImage" parent="Theme.WeatherApp">
+	<style name="Widget.WeatherApp.ActionImage" parent="">
 		<item name="android:focusable">true</item>
 		<item name="android:clickable">true</item>
 		<item name="background">?attr/selectableItemBackgroundBorderless</item>
 	</style>
 
+	<style name="Widget.WeatherApp.Search.CloseAction" parent="Widget.WeatherApp.ActionImage">
+		<item name="android:background">@color/bg_search_layout</item>
+		<item name="srcCompat">@drawable/ic_arrow_up</item>
+	</style>
 
+	<style name="Base.WeatherApp.Card" parent="Widget.MaterialComponents.CardView">
+		<item name="strokeWidth">0dp</item>
+	</style>
+
+	<style name="WeatherApp.SearchLayoutCard" parent="Base.WeatherApp.Card">
+		<item name="shapeAppearanceOverlay">
+			@style/ShapeAppearanceOverlay.WeatherApp.SearchLayoutCard
+		</item>
+		<item name="cardBackgroundColor">@color/bg_search</item>
+	</style>
+
+	<style name="ShapeAppearanceOverlay.WeatherApp.SearchLayoutCard" parent="">
+		<item name="cornerFamily">rounded</item>
+		<item name="cornerSizeTopRight">0dp</item>
+		<item name="cornerSizeTopLeft">0dp</item>
+		<item name="cornerSizeBottomRight">@dimen/radius_search_box</item>
+		<item name="cornerSizeBottomLeft">@dimen/radius_search_box</item>
+	</style>
+
+	<style name="Base.Text.WeatherApp.SearchResult" parent="Theme.WeatherApp">
+		<item name="android:textColor">@color/color_secondary</item>
+		<item name="android:textSize">@dimen/text_size_medium</item>
+	</style>
+
+	<style name="Text.WeatherApp.SearchResult.City" parent="Base.Text.WeatherApp.SearchResult">
+		<item name="fontFamily">@font/sf_medium</item>
+	</style>
+
+	<style name="Text.WeatherApp.SearchResult.Region" parent="Base.Text.WeatherApp.SearchResult">
+		<item name="fontFamily">@font/sf_regular</item>
+	</style>
 
 </resources>

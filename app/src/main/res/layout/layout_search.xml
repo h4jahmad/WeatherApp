@@ -1,37 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
+	style="@style/WeatherApp.SearchLayoutCard"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
-	app:cardBackgroundColor="@color/bg_search"
-	app:contentPaddingLeft="@dimen/space_very_large"
-	app:contentPaddingRight="@dimen/space_very_large"
-	app:contentPaddingTop="@dimen/space_semi_very_large">
+	app:cardPreventCornerOverlap="false">
 
-	<androidx.constraintlayout.widget.ConstraintLayout
+	<LinearLayout
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content">
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		android:paddingTop="@dimen/space_extra">
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginBottom="@dimen/space_semi_very_large"
+			android:gravity="center_vertical"
+			android:orientation="horizontal">
+
+			<ImageView
+				android:id="@+id/search_action_close"
+				style="@style/Widget.WeatherApp.ActionImage"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="@dimen/space_very_large"
+				android:layout_marginEnd="@dimen/space_half_medium"
+				android:contentDescription="@string/description_search_close_action"
+				android:padding="@dimen/space_small"
+				app:srcCompat="@drawable/ic_arrow_left" />
+
+			<androidx.appcompat.widget.SearchView
+				android:id="@+id/search_bar"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginEnd="@dimen/space_very_large"
+				android:background="@drawable/bg_search_input"
+				android:gravity="end"
+				android:hint="@string/hint_search_box"
+				app:closeIcon="@drawable/ic_close"
+				app:defaultQueryHint="@string/hint_search_box"
+				app:iconifiedByDefault="false"
+				app:queryHint="@string/hint_search_box"
+				app:searchIcon="@null" />
+		</LinearLayout>
+
+		<androidx.recyclerview.widget.RecyclerView
+			android:id="@+id/search_layout_result_list"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="@dimen/space_very_large"
+			android:layout_marginEnd="@dimen/space_very_large"
+			android:visibility="gone" />
 
 		<ImageView
-			android:id="@+id/search_action_close"
-			style="@style/Widget.WeatherApp.ActionImage"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:contentDescription="@string/description_search_close_action"
-			app:layout_constraintTop_toTopOf="@+id/search_bar"
-			app:layout_constraintBottom_toBottomOf="@+id/search_bar"
-			android:padding="@dimen/space_small"
-			app:layout_constraintStart_toStartOf="parent"
-			app:srcCompat="@drawable/ic_arrow_left" />
+			android:id="@+id/search_layout_close_pane_action"
+			style="@style/Widget.WeatherApp.Search.CloseAction"
+			android:layout_width="match_parent"
+			android:layout_height="@dimen/height_close_search_panel"
+			android:layout_marginBottom="@dimen/space_small_negative"
+			android:contentDescription="@string/description_close_search_panel"
+			android:padding="@dimen/space_semi_large"
+			android:visibility="gone" />
 
-		<androidx.appcompat.widget.SearchView
-			android:id="@+id/search_bar"
-			android:layout_width="0dp"
-			android:layout_height="wrap_content"
-			app:layout_constraintStart_toEndOf="@+id/search_action_close"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintTop_toTopOf="parent" />
-
-	</androidx.constraintlayout.widget.ConstraintLayout>
+	</LinearLayout>
 
 </com.google.android.material.card.MaterialCardView>

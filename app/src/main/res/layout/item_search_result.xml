@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="horizontal"
+	android:paddingBottom="@dimen/space_large">
+
+	<TextView
+		android:id="@+id/item_search_result_city_label"
+		style="@style/Text.WeatherApp.SearchResult.City"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		tools:text="Las Vegas" />
+
+	<TextView
+		android:id="@+id/item_search_result_city_region"
+		style="@style/Text.WeatherApp.SearchResult.Region"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="@dimen/space_mini"
+		tools:text="- Nevada" />
+
+</LinearLayout>

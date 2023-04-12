@@ -1,5 +1,7 @@
 package com.swensonhe.weatherapp
 
+import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager.HORIZONTAL
@@ -29,6 +31,19 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), MainContracts.View {
 
         presenter.attachView(this)
         presenter.start()
+
+        binding.activityMainSearchAction.setOnClickListener {
+            binding.layoutSearch.root.isVisible = true
+        }
+        binding.layoutSearch.searchActionClose.setOnClickListener {
+            binding.layoutSearch.root.isVisible = false
+        }
+        binding.layoutSearch.searchLayoutClosePaneAction.setOnClickListener {
+            binding.layoutSearch.root.isVisible = false
+        }
+    }
+
+    private fun initCollectors() {
         collectWithLifecycle(presenter.observeError()) { error ->
             if (error != null) {
                 binding.root.showSnackbar(error.messageResId, error.message)

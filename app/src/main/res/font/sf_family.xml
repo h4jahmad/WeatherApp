@@ -16,8 +16,8 @@
 		app:font="@font/sf_semibold"/>
 
 	<font
-		app:fontstyle="normal"
-		app:fontWeigh="700"
+		app:fontStyle="normal"
+		app:fontWeight="700"
 		app:font="@font/sf_bold"/>
 
 </font-family>

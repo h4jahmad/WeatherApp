@@ -23,6 +23,10 @@ class MainPresenter @Inject constructor(
 
     private val _searchList = MutableStateFlow<List<Location>>(emptyList())
     val searchList = _searchList.asStateFlow()
+    override fun showCurrentTime() {
+
+    }
+
     override fun observeError(): StateFlow<WeatherException?> = error
 
     override fun start() {

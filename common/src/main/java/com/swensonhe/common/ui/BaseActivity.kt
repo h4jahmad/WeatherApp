@@ -31,6 +31,7 @@ abstract class BaseActivity<V : ViewBinding> : AppCompatActivity() {
                 _binding = it as? V
             }.root
         )
+        initViews()
     }
 
     protected inline fun <reified T> collectWithLifecycle(

@@ -7,4 +7,6 @@
 	<string name="description_humidity">Humidity</string>
 	<string name="forecast_temp_placeholder">%1$f\u00B0/%2$f\u00B0F</string>
 	<string name="description_search_close_action">Close Search Panel</string>
+	<string name="hint_search_box">Search City</string>
+	<string name="description_close_search_panel">Close the search panel</string>
 </resources>

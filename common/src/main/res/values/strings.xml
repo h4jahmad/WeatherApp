@@ -7,4 +7,6 @@
 	<string name="toast_informational_error" />
 	<string name="toast_redirection_error" />
 	<string name="toast_unknown_error" />
+	
+	<string name="clock_format">h:mm a</string>
 </resources>

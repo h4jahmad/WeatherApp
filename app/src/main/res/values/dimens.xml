@@ -1,13 +1,18 @@
 <resources>
 	<dimen name="activity_main_padding_top">40dp</dimen>
 	<dimen name="activity_main_padding_horizontal">30dp</dimen>
-	<dimen name="space_small">8dp</dimen>
+	<dimen name="space_mini">4dp</dimen>
 	<dimen name="space_half_small">6dp</dimen>
+	<dimen name="space_small">8dp</dimen>
+	<dimen name="space_small_negative">-8dp</dimen>
+	<dimen name="space_half_medium">14dp</dimen>
 	<dimen name="space_medium">18dp</dimen>
 	<dimen name="space_semi_large">20dp</dimen>
 	<dimen name="space_large">24dp</dimen>
 	<dimen name="space_semi_very_large">28dp</dimen>
 	<dimen name="space_very_large">32dp</dimen>
+	<dimen name="space_half_extra">36dp</dimen>
+	<dimen name="space_extra">40dp</dimen>
 	<dimen name="size_action">24dp</dimen>
 	<dimen name="main_city_name_margin_top">66dp</dimen>
 	<dimen name="text_size_title">32sp</dimen>
@@ -19,4 +24,7 @@
 	<dimen name="text_size_small">12sp</dimen>
 	<dimen name="forecast_top_margin">120dp</dimen>
 	<dimen name="size_forecast_icon">28dp</dimen>
+	<dimen name="radius_search_box">14dp</dimen>
+	<dimen name="height_close_search_panel">48dp</dimen>
+	<dimen name="size_progress">64dp</dimen>
 </resources>

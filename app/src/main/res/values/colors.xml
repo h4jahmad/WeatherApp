@@ -6,4 +6,6 @@
 	<color name="primary_text_color">@color/white</color>
 	<color name="bg_search">#FCFCFC</color>
 	<color name="bg_search_close">#F1F4FF</color>
+	<color name="color_secondary">#444E72</color>
+	<color name="bg_search_layout">#F1F4FF</color>
 </resources>

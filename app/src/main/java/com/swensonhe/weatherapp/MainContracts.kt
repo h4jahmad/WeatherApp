@@ -10,6 +10,6 @@ interface MainContracts {
     }
 
     interface Presenter : BasePresenterContract<View> {
-
+        fun showCurrentTime()
     }
 }
