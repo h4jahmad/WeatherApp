@@ -33,10 +33,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), MainContracts.View {
         presenter.start()
 
         binding.activityMainSearchAction.setOnClickListener {
-            binding.layoutSearch.root.isVisible = true
+            binding.layoutSearch.root.circleReveal()
         }
         binding.layoutSearch.searchActionClose.setOnClickListener {
-            binding.layoutSearch.root.isVisible = false
+            binding.layoutSearch.root.circleHide()
         }
         binding.layoutSearch.searchLayoutClosePaneAction.setOnClickListener {
             binding.layoutSearch.root.isVisible = false
