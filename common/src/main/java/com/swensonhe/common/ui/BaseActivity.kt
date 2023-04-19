@@ -4,13 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import androidx.viewbinding.ViewBinding
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 
 typealias BindingInitializer = (LayoutInflater) -> ViewBinding
 
@@ -21,6 +15,7 @@ abstract class BaseActivity<V : ViewBinding> : AppCompatActivity() {
     abstract val bindingInitializer: BindingInitializer
 
     abstract fun initViews()
+    abstract fun initCollectors()
 
     @Suppress("UNCHECKED_CAST")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,18 +27,7 @@ abstract class BaseActivity<V : ViewBinding> : AppCompatActivity() {
             }.root
         )
         initViews()
-    }
-
-    protected inline fun <reified T> collectWithLifecycle(
-        flow: Flow<T>,
-        lifecycleState: Lifecycle.State = Lifecycle.State.STARTED,
-        crossinline collector: suspend (T) -> Unit,
-    ) {
-        lifecycleScope.launch {
-            repeatOnLifecycle(lifecycleState) {
-                flow.collectLatest { collector(it) }
-            }
-        }
+        initCollectors()
     }
 
     override fun onDestroy() {
