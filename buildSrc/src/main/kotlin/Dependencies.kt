@@ -27,4 +27,5 @@ object Dependencies {
     const val truth = "com.google.truth:truth:${Versions.truth}"
     const val androidXTestCore = "androidx.test:core:${Versions.androidXTestCore}"
     const val androidXTesting = "androidx.arch.core:core-testing:${Versions.androidXTesting}"
+    const val coil = "io.coil-kt:coil:${Versions.coil}"
 }

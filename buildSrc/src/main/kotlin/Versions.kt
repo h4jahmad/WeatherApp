@@ -17,4 +17,5 @@ object Versions {
     const val truth = "1.1.3"
     const val androidXTestCore = "1.5.0"
     const val androidXTesting = "2.2.0"
+    const val coil = "2.3.0"
 }
