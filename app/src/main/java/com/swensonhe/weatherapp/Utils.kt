@@ -5,50 +5,48 @@ import android.animation.AnimatorListenerAdapter
 import android.view.View
 import android.view.ViewAnimationUtils
 import androidx.core.view.isVisible
-import kotlin.math.hypot
+ import com.swensonhe.weatherapp.model.Coordinates
 import kotlin.math.max
 
 typealias OnItemClicked<T> = (T) -> Unit
 
-const val format12Hours = "h:mm a"
+const val DEFAULT_LOCATION = "San Francisco"
+val DEFAULT_LOCATION_COORDINATES = Coordinates(
+    lat = 37.78,
+    lon = -122.42
+)
 
 fun View.circleReveal(
-    left: Int,
-    bottom: Int,
+    startView: View
 ) {
-    val cx = width / 2
-    val cy = height / 2
-    val finalRadius = hypot(
-        cx.toDouble(),
-        cy.toDouble()
-    ).toFloat()
-    val startRadius = 0
+    val cx = (startView.left + startView.right) / 2
+    val cy = (startView.top + startView.bottom) / 2
     val endRadius = max(width, height)
     val anim = ViewAnimationUtils.createCircularReveal(
         this,
         cx,
         cy,
         0f,
-        finalRadius
+        endRadius.toFloat()
     )
+    anim.duration = 300
     isVisible = true
     anim.start()
 }
 
-fun View.circleHide() {
-    val cx = width / 2
-    val cy = height / 2
+fun View.circleHide(
+    endView: View,
+    onAnimationEnd: () -> Unit = {},
+) {
+    val cx = (endView.left + endView.right) / 2
+    val cy = (endView.top + endView.bottom) / 2
 
-    // get the initial radius for the clipping circle
-    val initialRadius = hypot(
-        cx.toDouble(),
-        cy.toDouble()
-    ).toFloat()
+    val endRadius = max(width, height)
     val anim = ViewAnimationUtils.createCircularReveal(
         this,
         cx,
         cy,
-        initialRadius,
+        endRadius.toFloat(),
         0f
     )
     anim.addListener(object : AnimatorListenerAdapter() {
@@ -56,6 +54,7 @@ fun View.circleHide() {
         override fun onAnimationEnd(animation: Animator) {
             super.onAnimationEnd(animation)
             isVisible = false
+            onAnimationEnd()
         }
     })
     anim.start()
