@@ -27,4 +27,6 @@
 	<dimen name="radius_search_box">14dp</dimen>
 	<dimen name="height_close_search_panel">48dp</dimen>
 	<dimen name="size_progress">64dp</dimen>
+	<dimen name="layout_search_padding_top">27dp</dimen>
+	<dimen name="padding_vertical_search_result">10dp</dimen>
 </resources>
