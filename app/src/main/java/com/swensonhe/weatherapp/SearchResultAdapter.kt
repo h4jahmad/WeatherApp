@@ -8,8 +8,9 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.swensonhe.common.entities.Location
 import com.swensonhe.weatherapp.databinding.ItemSearchResultBinding
+import com.swensonhe.weatherapp.model.Coordinates
 
-class SearchResultAdapter(private val onItemClicked: OnItemClicked<Location>) :
+class SearchResultAdapter(private val onItemClicked: OnItemClicked<Coordinates>) :
     ListAdapter<Location, SearchResultViewHolder>(AsyncDifferConfig.Builder(COMPARATOR).build()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SearchResultViewHolder =
@@ -40,11 +41,23 @@ class SearchResultAdapter(private val onItemClicked: OnItemClicked<Location>) :
 
 class SearchResultViewHolder(
     private val binding: ItemSearchResultBinding,
-    private val onItemClicked: OnItemClicked<Location>
+    private val onItemClicked: OnItemClicked<Coordinates>
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(item: Location) = with(binding) {
         itemSearchResultCityLabel.text = item.name
-        itemSearchResultCityRegion.text = item.region
-        root.setOnClickListener { onItemClicked(item) }
+        if (item.region.isNotEmpty()) {
+            itemSearchResultCityRegion.text = root.context.getString(
+                R.string.place_holder_search_result_region,
+                item.region
+            )
+        }
+        root.setOnClickListener {
+            onItemClicked(
+                Coordinates(
+                    lat = item.lat,
+                    lon = item.lon
+                )
+            )
+        }
     }
 }
