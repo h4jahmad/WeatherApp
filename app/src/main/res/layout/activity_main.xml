@@ -192,5 +192,5 @@
 	<include
 		android:id="@+id/layout_search"
 		layout="@layout/layout_search"
-		android:visibility="gone" />
+		android:visibility="invisible" />
 </FrameLayout>
