@@ -15,7 +15,7 @@ abstract class BaseActivity<V : ViewBinding> : AppCompatActivity() {
     abstract val bindingInitializer: BindingInitializer
 
     abstract fun initViews()
-    abstract fun initCollectors()
+    abstract fun initPresenter()
 
     @Suppress("UNCHECKED_CAST")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,7 +27,7 @@ abstract class BaseActivity<V : ViewBinding> : AppCompatActivity() {
             }.root
         )
         initViews()
-        initCollectors()
+        initPresenter()
     }
 
     override fun onDestroy() {

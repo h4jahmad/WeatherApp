@@ -6,20 +6,29 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.swensonhe.common.entities.WeatherException
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 abstract class BasePresenter<V : BaseViewContract<*>> : BasePresenterContract<V> {
 
-    private val _error = MutableStateFlow<WeatherException?>(null)
-    override val error = _error.asStateFlow()
+    protected val collectorJobs = mutableListOf<Job>()
+
+    protected val error = MutableStateFlow<WeatherException?>(null)
 
     private var _view: V? = null
     protected val view: V
         get() = _view ?: throw IllegalStateException("")
 
     override fun updateError(exception: WeatherException?) {
-        _error.update { exception }
+        if (exception == null) error.update { null }
+        val new = WeatherException(
+            messageResId = exception?.messageResId,
+            message = exception?.message
+        )
+        error.update { new }
     }
 
     override fun attachView(view: V) {
@@ -28,6 +37,7 @@ abstract class BasePresenter<V : BaseViewContract<*>> : BasePresenterContract<V>
 
     override fun detachView() {
         _view = null
+        collectorJobs.clear()
     }
 
     protected inline fun <reified T> LifecycleOwner.collectWithLifecycle(
