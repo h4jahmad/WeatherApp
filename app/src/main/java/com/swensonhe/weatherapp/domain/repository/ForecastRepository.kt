@@ -1,10 +1,12 @@
 package com.swensonhe.weatherapp.domain.repository
 
+import com.swensonhe.common.entities.ActionResult
 import com.swensonhe.common.entities.LocationWeather
 
 interface ForecastRepository {
     suspend fun getLocationForecast(
-        locationName: String,
+        locationLatitude: Double,
+        locationLongitude: Double,
         days: Int
-    ): LocationWeather
+    ): ActionResult<LocationWeather>
 }

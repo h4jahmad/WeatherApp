@@ -1,10 +1,12 @@
 package com.swensonhe.weatherapp.domain.datasource
 
+import com.swensonhe.common.entities.ActionResult
 import com.swensonhe.common.entities.LocationWeather
 
 interface ForecastDataSource {
     suspend fun fetchLocationWeather(
-        locationName: String,
+        locationLatitude: Double,
+        locationLongitude: Double,
         days: Int
-    ): LocationWeather
+    ): ActionResult<LocationWeather>
 }

@@ -1,10 +1,12 @@
 package com.swensonhe.weatherapp.domain.usecase.weather
 
-import com.swensonhe.common.entities.LocationWeather
+import com.swensonhe.common.entities.ActionResult
+import com.swensonhe.weatherapp.model.UiForecast
 
 interface ForecastUseCase {
     suspend fun getLocationForecast(
-        locationName: String,
+        locationLatitude: Double,
+        locationLongitude: Double,
         days: Int,
-    ): LocationWeather
+    ): ActionResult<UiForecast>
 }

@@ -1,6 +1,8 @@
 package com.swensonhe.weatherapp.di
 
 import com.swensonhe.common.di.RemoteDataSource
+import com.swensonhe.common.entities.LocationWeather
+import com.swensonhe.common.util.LocalDtoMapper
 import com.swensonhe.weatherapp.domain.datasource.ForecastDataSource
 import com.swensonhe.weatherapp.domain.datasource.ForecastRemoteDataSource
 import com.swensonhe.weatherapp.domain.datasource.SearchDataSource
@@ -9,6 +11,8 @@ import com.swensonhe.weatherapp.domain.repository.ForecastRepository
 import com.swensonhe.weatherapp.domain.repository.ForecastRepositoryImpl
 import com.swensonhe.weatherapp.domain.repository.SearchRepository
 import com.swensonhe.weatherapp.domain.repository.SearchRepositoryImpl
+import com.swensonhe.weatherapp.model.LocationWeatherMapper
+import com.swensonhe.weatherapp.model.UiForecast
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -31,5 +35,9 @@ interface DataModule {
 
     @Binds
     fun bindForecastRepository(impl: ForecastRepositoryImpl): ForecastRepository
+
+    @Binds
+    fun bindLocationWeatherDtoMapper(mapper: LocationWeatherMapper):
+            LocalDtoMapper<LocationWeather, UiForecast>
 
 }
