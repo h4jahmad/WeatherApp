@@ -30,7 +30,7 @@ class SearchResultAdapter(private val onItemClicked: OnItemClicked<Coordinates>)
     companion object {
         val COMPARATOR = object : DiffUtil.ItemCallback<Location>() {
             override fun areItemsTheSame(oldItem: Location, newItem: Location): Boolean =
-                oldItem.id == newItem.id
+                oldItem.tzId == newItem.tzId
 
             override fun areContentsTheSame(oldItem: Location, newItem: Location): Boolean =
                 oldItem == newItem
