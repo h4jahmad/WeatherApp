@@ -64,8 +64,5 @@ class LocationWeatherMapper @Inject constructor(
         )
     }
 
-    private fun addHttps(url: String): String = StringBuilder(url)
-        .deleteCharAt(0)
-        .insert(0, "https://")
-        .toString()
+    private fun addHttps(url: String): String = "https:$url"
 }
