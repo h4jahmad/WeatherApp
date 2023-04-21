@@ -29,7 +29,6 @@ class LocationWeatherMapper @Inject constructor(
         }
         val currentWeather = with(data.current) {
             UiCurrentWeather(
-                lastUpdated = lastUpdated,
                 tempF = tempF,
                 isDay = isDay,
                 condition = currentCondition,

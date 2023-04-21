@@ -1,5 +1,7 @@
 package com.swensonhe.common.entities
 
-data class Forecast (
-    val forecastDay: List<ForecastDay>,
+import com.google.gson.annotations.SerializedName
+
+data class Forecast(
+    @SerializedName("forecastday") val forecastDay: ArrayList<ForecastDay>,
 )
