@@ -25,7 +25,8 @@ class LocationWeatherMapper @Inject constructor(
             )
         }
         val currentCondition = with(data.current.condition) {
-            UiCondition(text = text, icon = icon)
+
+            UiCondition(text = text, icon = addHttps(icon))
         }
         val currentWeather = with(data.current) {
             UiCurrentWeather(
@@ -38,7 +39,7 @@ class LocationWeatherMapper @Inject constructor(
         }
         val forecastDays = data.forecast.forecastDay.map { forecast ->
             val condition = with(forecast.day.condition) {
-                UiCondition(text = text, icon = icon)
+                UiCondition(text = text, icon = addHttps(icon))
             }
 
             val dayLabel: ForecastDayType = dateTimeUseCase.getDayName(
@@ -62,4 +63,9 @@ class LocationWeatherMapper @Inject constructor(
             forecastDays = forecastDays
         )
     }
+
+    private fun addHttps(url: String): String = StringBuilder(url)
+        .deleteCharAt(0)
+        .insert(0, "https://")
+        .toString()
 }

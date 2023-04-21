@@ -50,9 +50,9 @@ dependencies {
     implementation(Dependencies.appcompat)
     implementation(Dependencies.material)
     implementation(Dependencies.constraintLayout)
-    implementation(Dependencies.coil)
     implementation(Dependencies.hilt)
     kapt(Dependencies.hiltCompiler)
+    implementation(Dependencies.coil)
 
     testImplementation(Dependencies.truth)
     testImplementation(Dependencies.junit)

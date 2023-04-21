@@ -50,6 +50,7 @@ dependencies {
     implementation(Dependencies.retrofit)
     implementation(Dependencies.retrofitGsonConverter)
     implementation(Dependencies.okhttpLoggingInterceptor)
+    implementation(Dependencies.coil)
 
     testImplementation(Dependencies.junit)
     androidTestImplementation(Dependencies.androidJunit)
