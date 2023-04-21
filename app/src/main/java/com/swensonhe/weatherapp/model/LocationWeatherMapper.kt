@@ -46,14 +46,13 @@ class LocationWeatherMapper @Inject constructor(
                 forecast.date,
                 locale
             )
-            val forecastDay =
-                UiForecastDay(
-                    date = forecast.date,
-                    dayLabel = dayLabel,
-                    maxtempF = forecast.day.maxtempF,
-                    mintempF = forecast.day.mintempF,
-                    condition = condition
-                )
+            val forecastDay = UiForecastDay(
+                date = forecast.date,
+                dayLabel = dayLabel,
+                maxtempF = forecast.day.maxtempF,
+                mintempF = forecast.day.mintempF,
+                condition = condition
+            )
             forecastDay
         }
 
