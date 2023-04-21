@@ -12,6 +12,7 @@
 		android:layout_width="@dimen/size_forecast_icon"
 		android:layout_height="@dimen/size_forecast_icon"
 		android:contentDescription="@null"
+		android:scaleType="fitXY"
 		tools:src="@drawable/ic_sun" />
 
 	<TextView

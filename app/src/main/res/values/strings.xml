@@ -5,14 +5,14 @@
 	<string name="fahrenheit_unit">\u00B0F</string>
 	<string name="description_wind_speed">Wind Speed</string>
 	<string name="description_humidity">Humidity</string>
-	<string name="forecast_temp_placeholder">%1$f\u00B0/%2$f\u00B0F</string>
+	<string name="forecast_temp_placeholder">%1$.1f\u00B0/%2$.1f\u00B0F</string>
 	<string name="description_search_close_action">Close Search Panel</string>
 	<string name="hint_search_box">Search City</string>
 	<string name="description_close_search_panel">Close the search panel</string>
 	<string name="description_search_layout">Loading locations</string>
 	<string name="place_holder_search_result_region">- %1$s</string>
 	<string name="place_holder_today_condition">It\'s a %1$s day.</string>
-	<string name="place_holder_wind">%1$f mph</string>
+	<string name="place_holder_wind">%1$.2f mph</string>
 	<string name="place_holder_humidity">%1$d%%</string>
 	<string name="tomorrow">Tomorrow</string>
 	<string name="today">Today</string>

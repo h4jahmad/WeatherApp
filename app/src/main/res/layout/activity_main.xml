@@ -76,6 +76,7 @@
 				android:layout_height="@dimen/size_current_weather_image"
 				android:layout_marginTop="@dimen/margin_top_weather_image"
 				android:contentDescription="@null"
+				android:scaleType="fitXY"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
 				app:layout_constraintTop_toBottomOf="@+id/activity_main_date_label"
@@ -153,6 +154,8 @@
 				android:layout_marginEnd="@dimen/space_small"
 				android:contentDescription="@string/description_humidity"
 				app:layout_constraintEnd_toStartOf="@+id/activity_main_current_humidity_label"
+				app:layout_constraintHorizontal_bias="1.0"
+				app:layout_constraintStart_toEndOf="@+id/activity_main_current_wind_label"
 				app:layout_constraintTop_toBottomOf="@+id/activity_main_current_weather_label"
 				app:srcCompat="@drawable/ic_drop" />
 
@@ -160,6 +163,7 @@
 				android:id="@+id/activity_main_current_humidity_label"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
+				android:layout_marginStart="@dimen/space_mini"
 				android:textSize="@dimen/text_size_small"
 				app:layout_constraintBottom_toBottomOf="@+id/activity_main_current_humidity_icon"
 				app:layout_constraintEnd_toEndOf="parent"
@@ -172,6 +176,7 @@
 				android:id="@+id/activity_main_forecast_list"
 				android:layout_width="0dp"
 				android:layout_height="wrap_content"
+				android:layout_marginHorizontal="@dimen/margin_horizontal_forecast_list"
 				android:layout_marginTop="@dimen/forecast_top_margin"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
