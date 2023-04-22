@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<style name="Widget.WeatherApp.MainImage" parent="">
+		<item name="android:scaleType">centerCrop</item>
+	</style>
+
+	<style name="WeatherApp.SearchLayoutCard" parent="Base.WeatherApp.Card">
+		<item name="shapeAppearanceOverlay">
+			@style/ShapeAppearanceOverlay.WeatherApp.SearchLayoutCard
+		</item>
+		<item name="cardBackgroundColor">@color/bg_search</item>
+	</style>
+
+	<style name="ShapeAppearanceOverlay.WeatherApp.SearchLayoutCard" parent="">
+		<item name="cornerFamily">rounded</item>
+		<item name="cornerSizeTopRight">@dimen/radius_search_box</item>
+		<item name="cornerSizeTopLeft">@dimen/radius_search_box</item>
+		<item name="cornerSizeBottomRight">@dimen/radius_search_box</item>
+		<item name="cornerSizeBottomLeft">@dimen/radius_search_box</item>
+	</style>
+
+</resources>

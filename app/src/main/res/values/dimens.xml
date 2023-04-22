@@ -1,6 +1,6 @@
 <resources>
-	<dimen name="activity_main_padding_top">8dp</dimen>
-	<dimen name="activity_main_padding_horizontal">37dp</dimen>
+	<dimen name="activity_main_space_top">45dp</dimen>
+	<dimen name="activity_main_space_horizontal">37dp</dimen>
 	<dimen name="space_mini">4dp</dimen>
 	<dimen name="space_half_small">6dp</dimen>
 	<dimen name="space_small">8dp</dimen>
@@ -18,11 +18,11 @@
 	<dimen name="text_size_title">32sp</dimen>
 	<dimen name="text_size_medium">16sp</dimen>
 	<dimen name="size_current_weather_image">70dp</dimen>
-	<dimen name="margin_top_weather_image">100dp</dimen>
+	<dimen name="margin_top_weather_image">101dp</dimen>
 	<dimen name="text_size_current_temp">56sp</dimen>
 	<dimen name="size_small_icon">20dp</dimen>
 	<dimen name="text_size_small">12sp</dimen>
-	<dimen name="forecast_top_margin">120dp</dimen>
+	<dimen name="forecast_list_top_space">120dp</dimen>
 	<dimen name="size_forecast_icon">28dp</dimen>
 	<dimen name="radius_search_box">14dp</dimen>
 	<dimen name="height_close_search_panel">48dp</dimen>
@@ -31,4 +31,6 @@
 	<dimen name="padding_vertical_search_result">10dp</dimen>
 	<dimen name="space_forecast_item">51dp</dimen>
 	<dimen name="margin_horizontal_forecast_list">12dp</dimen>
+	<dimen name="margin_end_humidity">43dp</dimen>
+	<dimen name="width_forecast_list">0dp</dimen>
 </resources>

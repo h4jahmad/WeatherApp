@@ -6,10 +6,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.swensonhe.common.entities.WeatherException
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
 abstract class BasePresenter<V : BaseViewContract<*>> : BasePresenterContract<V> {
@@ -24,11 +21,10 @@ abstract class BasePresenter<V : BaseViewContract<*>> : BasePresenterContract<V>
 
     override fun updateError(exception: WeatherException?) {
         if (exception == null) error.update { null }
-        val new = WeatherException(
+        error.update { WeatherException(
             messageResId = exception?.messageResId,
             message = exception?.message
-        )
-        error.update { new }
+        ) }
     }
 
     override fun attachView(view: V) {

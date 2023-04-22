@@ -2,10 +2,15 @@ package com.swensonhe.weatherapp
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
+import android.content.Context
+import android.content.res.Configuration
 import android.view.View
 import android.view.ViewAnimationUtils
+import android.view.animation.Animation
+import android.view.animation.RotateAnimation
 import androidx.core.view.isVisible
- import com.swensonhe.weatherapp.model.Coordinates
+import com.swensonhe.common.ui.DEFAULT_ANIMATION_PERIOD
+import com.swensonhe.weatherapp.model.Coordinates
 import kotlin.math.max
 
 typealias OnItemClicked<T> = (T) -> Unit
@@ -50,7 +55,6 @@ fun View.circleHide(
         0f
     )
     anim.addListener(object : AnimatorListenerAdapter() {
-
         override fun onAnimationEnd(animation: Animator) {
             super.onAnimationEnd(animation)
             isVisible = false
@@ -58,4 +62,24 @@ fun View.circleHide(
         }
     })
     anim.start()
+}
+
+fun Context.isOnTablet() =
+    ((resources.configuration.screenLayout and Configuration.SCREENLAYOUT_SIZE_MASK) >= Configuration.SCREENLAYOUT_SIZE_LARGE)
+
+fun View.rotate(from: Float, to: Float, onAnimationEnds: () -> Unit) {
+    val anim = RotateAnimation(from, to, 50f, 50f).apply {
+        duration = DEFAULT_ANIMATION_PERIOD
+    }
+    anim.setAnimationListener(object : Animation.AnimationListener {
+        override fun onAnimationStart(animation: Animation?) {}
+
+        override fun onAnimationEnd(animation: Animation?) {
+            onAnimationEnds()
+        }
+
+        override fun onAnimationRepeat(animation: Animation?) {}
+
+    })
+    startAnimation(anim)
 }

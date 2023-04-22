@@ -21,13 +21,15 @@ interface MainContracts {
         fun showProgress()
         fun hideProgress()
         fun setForecast(data: UiForecast, currentDate: String)
+        fun hideSearchIcon()
+        fun showSearchIcon()
     }
 
     interface Presenter : BasePresenterContract<View> {
         fun searchLocation(query: String?)
         fun updateCurrentLocation(locationCoordinates: Coordinates)
-        fun closeSearchPanel()
-        fun showSearchPanel()
 
+        fun setShouldShowSearchPanel(should: Boolean)
+        fun reverseSearchPanelVisibility()
     }
 }

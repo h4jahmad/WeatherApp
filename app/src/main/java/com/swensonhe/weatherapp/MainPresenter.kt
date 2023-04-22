@@ -3,6 +3,7 @@ package com.swensonhe.weatherapp
 import android.util.Log
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
+import com.swensonhe.common.di.IsOnTablet
 import com.swensonhe.common.entities.ActionResult
 import com.swensonhe.common.entities.Location
 import com.swensonhe.common.entities.WeatherException
@@ -25,11 +26,13 @@ class MainPresenter @Inject constructor(
     private val searchUseCase: SearchUseCase,
     private val forecastUseCase: ForecastUseCase,
     private val dateTimeUseCase: DateTimeUseCase,
+    @IsOnTablet val isOnTablet: Boolean,
 ) : BasePresenter<MainContracts.View>(), MainContracts.Presenter {
 
     private var searchJob: Job? = null
     private var forecastJob: Job? = null
 
+    private val shouldShowSearchPanel = MutableStateFlow(false)
     private val currentLocationCoordinates = MutableStateFlow(DEFAULT_LOCATION_COORDINATES)
     private val searchList = MutableStateFlow<List<Location>>(emptyList())
 
@@ -51,6 +54,13 @@ class MainPresenter @Inject constructor(
             error.message?.let {
                 view.showError(it)
                 return@collectWithLifecycle
+            }
+        }
+        collectorJobs += owner.collectWithLifecycle(shouldShowSearchPanel) { should ->
+            if (should) {
+                showSearchPanel()
+            } else {
+                hideSearchPanel()
             }
         }
     }
@@ -96,18 +106,34 @@ class MainPresenter @Inject constructor(
 
     override fun updateCurrentLocation(locationCoordinates: Coordinates) {
         currentLocationCoordinates.update { locationCoordinates }
-        closeSearchPanel()
     }
 
-    override fun closeSearchPanel() {
+    private fun hideSearchPanel() {
         view.emptySearchList()
         view.hideSearchPanel()
+        if (isOnTablet) {
+            view.showSearchIcon()
+        }
         searchJob?.cancel()
         searchList.update { emptyList() }
     }
 
-    override fun showSearchPanel() {
+    private fun showSearchPanel() {
+        if (isOnTablet) {
+            view.hideSearchIcon()
+        }
         view.initSearchPanel()
+    }
+
+    override fun setShouldShowSearchPanel(should: Boolean) {
+        shouldShowSearchPanel.update { should }
+    }
+
+    /**
+     * Will be called only on table mode.
+     * */
+    override fun reverseSearchPanelVisibility() {
+        shouldShowSearchPanel.update { !shouldShowSearchPanel.value }
     }
 
     private fun fetchForecast(location: Coordinates) {

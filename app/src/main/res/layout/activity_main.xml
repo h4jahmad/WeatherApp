@@ -3,8 +3,16 @@
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	android:background="@drawable/bg_main">
+	android:layout_height="match_parent">
+
+	<ImageView
+		android:id="@+id/activity_main_background"
+		style="@style/Widget.WeatherApp.MainImage"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_gravity="center_horizontal"
+		android:contentDescription="@null"
+		android:src="@drawable/bg_main" />
 
 	<ScrollView
 		android:id="@+id/activity_main_container"
@@ -15,9 +23,9 @@
 		<androidx.constraintlayout.widget.ConstraintLayout
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:layout_marginStart="@dimen/activity_main_padding_horizontal"
-			android:layout_marginTop="@dimen/activity_main_padding_top"
-			android:layout_marginEnd="@dimen/activity_main_padding_horizontal"
+			android:layout_marginStart="@dimen/activity_main_space_horizontal"
+			android:layout_marginTop="@dimen/activity_main_space_top"
+			android:layout_marginEnd="@dimen/activity_main_space_horizontal"
 			android:fitsSystemWindows="true">
 
 			<TextClock
@@ -43,7 +51,7 @@
 				android:clickable="true"
 				android:contentDescription="@string/main_search_city_action"
 				android:focusable="true"
-				android:padding="@dimen/space_mini"
+				android:padding="@dimen/space_small"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintTop_toTopOf="parent"
 				app:srcCompat="@drawable/ic_search" />
@@ -90,9 +98,9 @@
 				android:layout_marginTop="@dimen/space_large"
 				android:gravity="center"
 				android:textSize="@dimen/text_size_current_temp"
-				app:layout_constraintEnd_toStartOf="@+id/activity_main_current_temp_unit_label"
-				app:layout_constraintHorizontal_bias="1.0"
-				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintEnd_toEndOf="@+id/activity_main_current_weather_image"
+				app:layout_constraintHorizontal_bias="0.8"
+				app:layout_constraintStart_toStartOf="@+id/activity_main_current_weather_image"
 				app:layout_constraintTop_toBottomOf="@+id/activity_main_current_weather_image"
 				tools:text="82.4" />
 
@@ -104,9 +112,8 @@
 				android:gravity="center"
 				android:textSize="@dimen/text_size_current_temp"
 				app:layout_constraintBottom_toBottomOf="@+id/activity_main_current_temp_label"
-				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintHorizontal_bias="0.721"
-				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintStart_toEndOf="@+id/activity_main_current_temp_label"
 				app:layout_constraintTop_toTopOf="@+id/activity_main_current_temp_label"
 				app:layout_constraintVertical_bias="1.0"
 				tools:text="@string/fahrenheit_unit" />
@@ -129,9 +136,9 @@
 				android:layout_height="@dimen/size_small_icon"
 				android:layout_marginTop="@dimen/space_semi_large"
 				android:contentDescription="@string/description_wind_speed"
-				app:layout_constraintEnd_toEndOf="parent"
-				app:layout_constraintHorizontal_bias="0.3"
-				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintEnd_toStartOf="@+id/activity_main_current_wind_label"
+				app:layout_constraintHorizontal_bias="0.5"
+				app:layout_constraintStart_toStartOf="@+id/activity_main_current_weather_image"
 				app:layout_constraintTop_toBottomOf="@+id/activity_main_current_weather_label"
 				app:srcCompat="@drawable/ic_wind" />
 
@@ -142,6 +149,8 @@
 				android:layout_marginStart="@dimen/space_small"
 				android:textSize="@dimen/text_size_small"
 				app:layout_constraintBottom_toBottomOf="@+id/activity_main_current_wind_icon"
+				app:layout_constraintEnd_toStartOf="@+id/activity_main_current_humidity_icon"
+				app:layout_constraintHorizontal_bias="0.5"
 				app:layout_constraintStart_toEndOf="@+id/activity_main_current_wind_icon"
 				app:layout_constraintTop_toTopOf="@+id/activity_main_current_wind_icon"
 				tools:text="3 mph" />
@@ -150,34 +159,34 @@
 				android:id="@+id/activity_main_current_humidity_icon"
 				android:layout_width="@dimen/size_small_icon"
 				android:layout_height="@dimen/size_small_icon"
-				android:layout_marginTop="@dimen/space_semi_large"
-				android:layout_marginEnd="@dimen/space_small"
+				android:layout_marginStart="@dimen/margin_end_humidity"
 				android:contentDescription="@string/description_humidity"
+				app:layout_constraintBottom_toBottomOf="@+id/activity_main_current_humidity_label"
 				app:layout_constraintEnd_toStartOf="@+id/activity_main_current_humidity_label"
-				app:layout_constraintHorizontal_bias="1.0"
+				app:layout_constraintHorizontal_bias="0.5"
 				app:layout_constraintStart_toEndOf="@+id/activity_main_current_wind_label"
-				app:layout_constraintTop_toBottomOf="@+id/activity_main_current_weather_label"
+				app:layout_constraintTop_toTopOf="@+id/activity_main_current_humidity_label"
 				app:srcCompat="@drawable/ic_drop" />
 
 			<TextView
 				android:id="@+id/activity_main_current_humidity_label"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:layout_marginStart="@dimen/space_mini"
+				android:layout_marginStart="@dimen/space_small"
 				android:textSize="@dimen/text_size_small"
-				app:layout_constraintBottom_toBottomOf="@+id/activity_main_current_humidity_icon"
-				app:layout_constraintEnd_toEndOf="parent"
-				app:layout_constraintHorizontal_bias="0.7"
-				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toTopOf="@+id/activity_main_current_humidity_icon"
+				app:layout_constraintBottom_toBottomOf="@+id/activity_main_current_wind_icon"
+				app:layout_constraintEnd_toEndOf="@+id/activity_main_current_weather_image"
+				app:layout_constraintHorizontal_bias="0.5"
+				app:layout_constraintStart_toEndOf="@+id/activity_main_current_humidity_icon"
+				app:layout_constraintTop_toTopOf="@+id/activity_main_current_wind_icon"
 				tools:text="60%" />
 
 			<androidx.recyclerview.widget.RecyclerView
 				android:id="@+id/activity_main_forecast_list"
-				android:layout_width="0dp"
+				android:layout_width="@dimen/width_forecast_list"
 				android:layout_height="wrap_content"
 				android:layout_marginHorizontal="@dimen/margin_horizontal_forecast_list"
-				android:layout_marginTop="@dimen/forecast_top_margin"
+				android:layout_marginTop="@dimen/forecast_list_top_space"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
 				app:layout_constraintTop_toBottomOf="@+id/activity_main_current_wind_icon" />

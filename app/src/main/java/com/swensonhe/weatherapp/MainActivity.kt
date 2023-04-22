@@ -29,7 +29,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), MainContracts.View {
     private val forecastAdapter = ForecastAdapter()
     private var searchListAdapter: SearchResultAdapter? = null
     override fun initViews(): Unit = with(binding) {
-        searchListAdapter = SearchResultAdapter(presenter::updateCurrentLocation)
+        searchListAdapter = SearchResultAdapter {
+            presenter.updateCurrentLocation(it)
+            presenter.setShouldShowSearchPanel(false)
+        }
         activityMainForecastList.apply {
             itemAnimator = DefaultItemAnimator()
             val lm = LinearLayoutManager(context, HORIZONTAL, false)
@@ -49,13 +52,17 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), MainContracts.View {
             adapter = searchListAdapter
         }
         activityMainSearchAction.setOnClickListener {
-            presenter.showSearchPanel()
+            if (isOnTablet()) {
+                presenter.reverseSearchPanelVisibility()
+                return@setOnClickListener
+            }
+            presenter.setShouldShowSearchPanel(true)
         }
-        layoutSearch.searchActionClose.setOnClickListener {
-            presenter.closeSearchPanel()
+        layoutSearch.searchActionClose?.setOnClickListener {
+            presenter.setShouldShowSearchPanel(false)
         }
-        layoutSearch.searchLayoutClosePaneAction.setOnClickListener {
-            presenter.closeSearchPanel()
+        layoutSearch.searchLayoutClosePaneAction?.setOnClickListener {
+            presenter.setShouldShowSearchPanel(false)
         }
     }
 
@@ -116,6 +123,18 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), MainContracts.View {
         forecastAdapter.submitList(data.forecastDays)
     }
 
+    override fun hideSearchIcon() = with(binding) {
+        activityMainSearchAction.rotate(0f, 360f) {
+            activityMainSearchAction.setImageResource(R.drawable.ic_arrow_right)
+        }
+    }
+
+    override fun showSearchIcon() = with(binding) {
+        activityMainSearchAction.rotate(0f, 360f) {
+            activityMainSearchAction.setImageResource(R.drawable.ic_search)
+        }
+    }
+
     override fun hideSearchPanel() = with(binding.layoutSearch) {
         root.circleHide(binding.activityMainSearchAction) {
             searchInput.setQuery("", false)
@@ -139,16 +158,17 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), MainContracts.View {
     override fun updateSearchResults(locations: List<Location>) {
         if (locations.isNotEmpty()) {
             binding.layoutSearch.searchLayoutResultList.isVisible = true
-            binding.layoutSearch.searchLayoutClosePaneAction.isVisible = true
+            binding.layoutSearch.searchLayoutClosePaneAction?.isVisible = true
         } else {
             binding.layoutSearch.searchLayoutResultList.isVisible = false
-            binding.layoutSearch.searchLayoutClosePaneAction.isVisible = false
+            binding.layoutSearch.searchLayoutClosePaneAction?.isVisible = false
         }
         searchListAdapter?.submitList(locations)
     }
 
     override fun showError(messageResId: Int) {
         binding.root.showSnackbar(messageResId)
+        changeContentVisibility(false)
     }
 
     override fun showError(message: String) {
@@ -158,7 +178,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), MainContracts.View {
     override fun emptySearchList() = with(binding.layoutSearch) {
         searchListAdapter?.submitList(emptyList())
         searchLayoutResultList.isVisible = false
-        searchLayoutClosePaneAction.isVisible = false
+        searchLayoutClosePaneAction?.isVisible = false
     }
 
     private fun changeContentVisibility(isVisible: Boolean) = with(binding) {
