@@ -33,4 +33,8 @@
 	<dimen name="margin_horizontal_forecast_list">12dp</dimen>
 	<dimen name="margin_end_humidity">43dp</dimen>
 	<dimen name="width_forecast_list">0dp</dimen>
+	<dimen name="layout_search_margin_end">17dp</dimen>
+	<dimen name="space_top_search_layout">0dp</dimen>
+	<dimen name="width_layout_search">300dp</dimen>
+	<dimen name="height_search_input">50dp</dimen>
 </resources>

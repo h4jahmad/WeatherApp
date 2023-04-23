@@ -10,7 +10,6 @@
 		style="@style/Widget.WeatherApp.MainImage"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		android:layout_gravity="center_horizontal"
 		android:contentDescription="@null"
 		android:src="@drawable/bg_main" />
 
@@ -24,7 +23,6 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_marginStart="@dimen/activity_main_space_horizontal"
-			android:layout_marginTop="@dimen/activity_main_space_top"
 			android:layout_marginEnd="@dimen/activity_main_space_horizontal"
 			android:fitsSystemWindows="true">
 
@@ -32,13 +30,13 @@
 				android:id="@+id/activity_main_clock"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
+				android:layout_marginTop="@dimen/activity_main_space_top"
 				android:format12Hour="@string/clock_format"
 				android:format24Hour="@string/clock_format"
 				android:textSize="@dimen/text_size_medium"
-				app:layout_constraintBottom_toBottomOf="@+id/activity_main_search_action"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toTopOf="@+id/activity_main_search_action"
+				app:layout_constraintTop_toTopOf="parent"
 				app:layout_constraintVertical_bias="0.5"
 				tools:text="9:12 AM" />
 
@@ -47,6 +45,7 @@
 				style="@style/Widget.WeatherApp.ActionImage"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
+				android:layout_marginTop="@dimen/activity_main_space_top"
 				android:background="?attr/selectableItemBackgroundBorderless"
 				android:clickable="true"
 				android:contentDescription="@string/main_search_city_action"
@@ -55,6 +54,16 @@
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintTop_toTopOf="parent"
 				app:srcCompat="@drawable/ic_search" />
+
+			<include
+				android:id="@+id/layout_search"
+				layout="@layout/layout_search"
+				android:layout_width="@dimen/width_layout_search"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="@dimen/space_very_large"
+				android:layout_marginEnd="@dimen/layout_search_margin_end"
+				app:layout_constraintEnd_toStartOf="@+id/activity_main_search_action"
+				app:layout_constraintTop_toTopOf="parent" />
 
 			<TextView
 				android:id="@+id/activity_main_city_name"
@@ -203,7 +212,4 @@
 		android:indeterminateTint="@color/white"
 		android:visibility="gone" />
 
-	<include
-		android:id="@+id/layout_search"
-		layout="@layout/layout_search" />
 </FrameLayout>

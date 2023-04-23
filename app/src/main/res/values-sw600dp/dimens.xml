@@ -1,6 +1,4 @@
 <resources>
 	<dimen name="width_forecast_list">320dp</dimen>
 	<dimen name="forecast_list_top_space">136dp</dimen>
-	<dimen name="space_top_search_layout">0dp</dimen>
-<!--	<dimen name="width_activity_main_background_image">700dp</dimen>-->
 </resources>

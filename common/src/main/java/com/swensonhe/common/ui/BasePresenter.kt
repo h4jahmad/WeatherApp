@@ -15,9 +15,7 @@ abstract class BasePresenter<V : BaseViewContract<*>> : BasePresenterContract<V>
 
     protected val error = MutableStateFlow<WeatherException?>(null)
 
-    private var _view: V? = null
-    protected val view: V
-        get() = _view ?: throw IllegalStateException("")
+    protected var view: V? = null
 
     override fun updateError(exception: WeatherException?) {
         if (exception == null) error.update { null }
@@ -28,11 +26,11 @@ abstract class BasePresenter<V : BaseViewContract<*>> : BasePresenterContract<V>
     }
 
     override fun attachView(view: V) {
-        _view = view
+        this.view = view
     }
 
     override fun detachView() {
-        _view = null
+        this.view = null
         collectorJobs.clear()
     }
 

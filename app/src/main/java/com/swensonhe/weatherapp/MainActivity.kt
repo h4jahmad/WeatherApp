@@ -110,7 +110,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), MainContracts.View {
         activityMainCurrentTempUnitLabel.setText(R.string.fahrenheit_unit)
         activityMainCurrentWeatherLabel.text = getString(
             R.string.place_holder_today_condition,
-            data.current.condition.text
+            data.current.condition.text,
+            getString(if (data.current.isDay) R.string.day else R.string.night)
         )
         activityMainCurrentWindLabel.text = getString(
             R.string.place_holder_wind,
@@ -124,13 +125,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), MainContracts.View {
     }
 
     override fun hideSearchIcon() = with(binding) {
-        activityMainSearchAction.rotate(0f, 360f) {
+        activityMainSearchAction.rotate {
             activityMainSearchAction.setImageResource(R.drawable.ic_arrow_right)
         }
     }
 
     override fun showSearchIcon() = with(binding) {
-        activityMainSearchAction.rotate(0f, 360f) {
+        activityMainSearchAction.rotate {
             activityMainSearchAction.setImageResource(R.drawable.ic_search)
         }
     }

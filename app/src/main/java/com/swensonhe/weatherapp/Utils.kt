@@ -7,15 +7,13 @@ import android.content.res.Configuration
 import android.view.View
 import android.view.ViewAnimationUtils
 import android.view.animation.Animation
-import android.view.animation.RotateAnimation
+import android.view.animation.AnimationUtils
 import androidx.core.view.isVisible
-import com.swensonhe.common.ui.DEFAULT_ANIMATION_PERIOD
 import com.swensonhe.weatherapp.model.Coordinates
 import kotlin.math.max
 
 typealias OnItemClicked<T> = (T) -> Unit
 
-const val DEFAULT_LOCATION = "San Francisco"
 val DEFAULT_LOCATION_COORDINATES = Coordinates(
     lat = 37.78,
     lon = -122.42
@@ -67,10 +65,11 @@ fun View.circleHide(
 fun Context.isOnTablet() =
     ((resources.configuration.screenLayout and Configuration.SCREENLAYOUT_SIZE_MASK) >= Configuration.SCREENLAYOUT_SIZE_LARGE)
 
-fun View.rotate(from: Float, to: Float, onAnimationEnds: () -> Unit) {
-    val anim = RotateAnimation(from, to, 50f, 50f).apply {
-        duration = DEFAULT_ANIMATION_PERIOD
-    }
+fun View.rotate(onAnimationEnds: () -> Unit) {
+    val anim = AnimationUtils.loadAnimation(
+        context,
+        R.anim.anim_rotate
+    )
     anim.setAnimationListener(object : Animation.AnimationListener {
         override fun onAnimationStart(animation: Animation?) {}
 
@@ -79,7 +78,6 @@ fun View.rotate(from: Float, to: Float, onAnimationEnds: () -> Unit) {
         }
 
         override fun onAnimationRepeat(animation: Animation?) {}
-
     })
     startAnimation(anim)
 }

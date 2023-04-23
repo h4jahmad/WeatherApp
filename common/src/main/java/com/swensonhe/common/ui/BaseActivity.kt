@@ -4,7 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
+import androidx.lifecycle.lifecycleScope
 import androidx.viewbinding.ViewBinding
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 typealias BindingInitializer = (LayoutInflater) -> ViewBinding
 
@@ -27,7 +30,10 @@ abstract class BaseActivity<V : ViewBinding> : AppCompatActivity() {
             }.root
         )
         initViews()
-        initPresenter()
+        lifecycleScope.launch {
+            delay(300)
+            initPresenter()
+        }
     }
 
     override fun onDestroy() {
