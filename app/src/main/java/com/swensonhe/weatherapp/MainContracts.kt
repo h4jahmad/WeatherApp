@@ -28,7 +28,6 @@ interface MainContracts {
     interface Presenter : BasePresenterContract<View> {
         fun searchLocation(query: String?)
         fun updateCurrentLocation(locationCoordinates: Coordinates)
-
         fun setShouldShowSearchPanel(should: Boolean)
         fun reverseSearchPanelVisibility()
     }

@@ -8,4 +8,6 @@
 	<color name="bg_search_close">#F1F4FF</color>
 	<color name="color_secondary">#444E72</color>
 	<color name="bg_search_layout">#F1F4FF</color>
+	<color name="text_color_search_view">#444E72</color>
+	<color name="text_color_hint_search_view">#838BAA</color>
 </resources>

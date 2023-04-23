@@ -1,5 +1,6 @@
 package com.swensonhe.weatherapp
 
+import android.widget.EditText
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
@@ -45,6 +46,12 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), MainContracts.View {
             })
             adapter = forecastAdapter
         }
+
+        layoutSearch.searchInput
+            .findViewById<EditText>(androidx.appcompat.R.id.search_src_text).apply {
+                setTextColor(getColor(R.color.text_color_search_view))
+                setHintTextColor(getColor(R.color.text_color_hint_search_view))
+            }
 
         layoutSearch.searchLayoutResultList.apply {
             itemAnimator = DefaultItemAnimator()

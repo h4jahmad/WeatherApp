@@ -35,11 +35,9 @@
 				android:format12Hour="@string/clock_format"
 				android:format24Hour="@string/clock_format"
 				android:textSize="@dimen/text_size_medium"
-				app:layout_constraintBottom_toBottomOf="@+id/activity_main_search_action"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toTopOf="@+id/activity_main_search_action"
-				app:layout_constraintVertical_bias="0.5"
+				app:layout_constraintTop_toTopOf="parent"
 				tools:text="9:12 AM" />
 
 			<ImageView
